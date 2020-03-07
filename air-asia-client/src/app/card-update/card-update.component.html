@@ -1,1 +1,19 @@
-<p>card-update works!</p>
+<p>Update Card</p>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Customer Name</mat-label>
+        <textarea matInput placeholder="Ex. Chong Oh"></textarea>
+      </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <mat-label>Account type</mat-label>
+      <textarea matInput placeholder="Ex. Executive"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Points</mat-label>
+        <textarea matInput placeholder="Ex. 10"></textarea>
+      </mat-form-field>
+  </form>
+
+  <button mat-button routerLink="/card-list" routerLinkActive="active">Submit</button>

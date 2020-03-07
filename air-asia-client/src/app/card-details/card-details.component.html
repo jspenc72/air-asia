@@ -1,1 +1,18 @@
-<p>card-details works!</p>
+<p>Card Detail</p>
+<button mat-button routerLink="/card-delete" routerLinkActive="active">Delete Card</button>
+<button mat-button routerLink="/card-update" routerLinkActive="active">Update Card</button>
+
+<mat-card class="example-card" >
+    <img mat-card-image [src]="item.image" alt="Photo of a Shiba Inu" >
+    <mat-card-content>
+        <p>
+        {{item.description}}<br>
+        {{item.type}} Card Type<br>
+        {{item.points}} Card Points<br>
+        {{item.value}} Card Value
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>Redeem</button>
+    </mat-card-actions>
+</mat-card>
