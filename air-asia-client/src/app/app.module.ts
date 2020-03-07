@@ -8,6 +8,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { CardAddComponent } from './card-add/card-add.component';
 import { CardUpdateComponent } from './card-update/card-update.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CardUpdateComponent } from './card-update/card-update.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
