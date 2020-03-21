@@ -21,6 +21,7 @@ ng build --extractCss=true --optimization=false
 ```
 
 # Dependencies
+
 https://cli.angular.io
 https://laravel.com
 
