@@ -18,6 +18,7 @@ ng serve
 
 ```bash
 ng build --extractCss=true --optimization=false
+ng build --prod --base-href "air-asia"
 ```
 
 # Dependencies
