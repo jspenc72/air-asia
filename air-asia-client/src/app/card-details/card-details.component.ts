@@ -22,8 +22,8 @@ export class CardDetailsComponent implements OnInit {
 
     if (!this.state$.item){
         this.router.navigateByUrl('/card-list');
-    }else{
-      this.item = this.state$.item; 
+    } else{
+      this.item = this.state$.item;
     }
   }
 
