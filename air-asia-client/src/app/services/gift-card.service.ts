@@ -30,11 +30,6 @@ export class GiftCardService {
     return throwError(errorMessage);
   }
 
-  public sendGetRequest(){
-    console.log("sendGetRequest")
-    return this.httpClient.get(this.REST_API_SERVER+this.ENDPOINT).pipe(retry(3), catchError(this.handleError));
-  }
-
   public addGiftCard(giftcard: GiftCard): Observable<GiftCard> {
     return this.httpClient.post<GiftCard>(this.REST_API_SERVER+this.ENDPOINT, giftcard, httpOptions).pipe(
       tap((c: GiftCard) => console.log(`added card ${c}`)),

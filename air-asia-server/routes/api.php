@@ -35,8 +35,8 @@ Route::post('redemptions', 'RedemptionController@store');
 Route::put('redemptions/{redepmtion}', 'RedemptionController@update');
 Route::delete('redemptions/{redepmtion}', 'RedemptionController@destroy');
 
-Route::get('gift-cards', 'GiftCardController@index');
-Route::get('gift-cards/{giftcard}', 'GiftCardController@show');
-Route::post('gift-cards', 'GiftCardController@store');
-Route::put('gift-cards/{giftcard}', 'GiftCardController@update');
-Route::delete('gift-cards/{giftcard}', 'GiftCardController@destroy');
+Route::get('gift-cards', 'GiftCardController@index');   //Get All
+Route::get('gift-cards/{giftcard}', 'GiftCardController@show'); // Read One
+Route::post('gift-cards', 'GiftCardController@store');           // Create 
+Route::put('gift-cards/{giftcard}', 'GiftCardController@update'); // Update
+Route::delete('gift-cards/{giftcard}', 'GiftCardController@destroy'); // Delete
