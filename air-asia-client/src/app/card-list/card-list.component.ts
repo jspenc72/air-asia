@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes, Router, RouterState } from '@angular/router';
+import { GiftCardService } from '../services/gift-card.service';
+import { GiftCard } from '../models/gift-card.model';
 // import {StateService} from '@uirouter/angular';
 @Component({
   selector: 'app-card-list',
@@ -9,11 +11,11 @@ import { RouterModule, Routes, Router, RouterState } from '@angular/router';
 export class CardListComponent implements OnInit {
   items: any
   state: any
-  constructor(private router: Router) { 
+  constructor(private giftCardService: GiftCardService, private router: Router) { 
     this.state = router.routerState;
-    this.items = [{ title: "card1", type: "", value: 100, image: "https://d2e70e9yced57e.cloudfront.net/wallethub/posts/68808/best-gift-cards.png", description: "Chick Fila-A $10 Gift Card", points: 10}, 
-    { title: "card2", type: "", value: 100, image: "https://gawdamedia.com/wp-content/uploads/2019/07/generic-gift-card.jpeg", description: "Wendy's $10 Gift Card", points: 20}, 
-    { title: "card3", type: "", value: 100, image: "https://cdn.shopify.com/s/files/1/0963/1508/products/GenericGiftCard1_1024x1024.jpg?v=1575933245", description: "McDonalds $10 Gift Card", points: 30}]
+    this.items = [{ cardName: "card1", type: "", points: 100, image: "https://d2e70e9yced57e.cloudfront.net/wallethub/posts/68808/best-gift-cards.png"}, 
+    { cardName: "card2", type: "", points: 100, image: "https://gawdamedia.com/wp-content/uploads/2019/07/generic-gift-card.jpeg"}, 
+    { cardName: "card3", type: "", points: 100, image: "https://cdn.shopify.com/s/files/1/0963/1508/products/GenericGiftCard1_1024x1024.jpg?v=1575933245"}]
   }
   
   displayCardDetail(item): void {
@@ -21,8 +23,33 @@ export class CardListComponent implements OnInit {
     console.log(item)
     this.router.navigateByUrl('/card-details', { state: { item: item  } });
   }
+  reloadGiftCards(): void {
+    this.giftCardService.getGiftCards().subscribe((data: any)=>{
+      console.log(data);
+      data.forEach(card => {
+        this.items.push(card)
+      });
+      console.log(this.items)
+    })
+  }
   
   ngOnInit(): void {
+    this.reloadGiftCards()
   }
+
+  ngDoCheck(): void {
+    console.log("ngDoCheck");
+  }
+
+  ngAfterContentChecked(): void {
+    console.log("ngAfterContentChecked");
+  }
+
+  ngAfterViewChecked(): void {
+    console.log("ngAfterViewChecked");
+    
+  }
+
+
 
 }

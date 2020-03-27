@@ -17,6 +17,7 @@ class CreateGiftCardsTable extends Migration
             $table->increments('cardId');
             $table->string('cardName');
             $table->string('cardType');
+            $table->string('cardImageUrl');
             $table->float('cardValue', 10, 2);
             $table->integer('points');
             $table->timestamps();

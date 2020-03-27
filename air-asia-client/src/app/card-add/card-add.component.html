@@ -1,9 +1,9 @@
 <p>Add Card</p>
 <form class="example-form" [formGroup]="newCardFormGroup" >
     <mat-form-field class="example-full-width">
-        <mat-label>Card Name</mat-label>
-        <input matInput formControlName="cardName" placeholder="Ex. Chong Oh" required>
-      </mat-form-field>
+      <mat-label>Card Name</mat-label>
+      <input matInput formControlName="cardName" placeholder="Ex. Chong Oh" required>
+    </mat-form-field>
 
     <mat-form-field>
       <mat-label>Card Type</mat-label>
@@ -25,4 +25,4 @@
     </mat-form-field>
 </form>
 
-<button mat-button routerLink="/card-list" routerLinkActive="active" (click)="createCard()">Create New Card</button>
+<button mat-button (click)="createCard()">Create New Card</button>

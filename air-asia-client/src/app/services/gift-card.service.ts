@@ -41,4 +41,15 @@ export class GiftCardService {
       catchError(this.handleError)
     );
   }
+
+  public getGiftCards(): Observable<GiftCard[]> {
+    return this.httpClient.get<GiftCard[]>(`${this.REST_API_SERVER+this.ENDPOINT}`)
+      .pipe(
+        tap(cards => {
+          
+          console.log('fetched cases')
+        }),
+        catchError(this.handleError)
+      );
+  }
 }
