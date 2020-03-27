@@ -14,7 +14,11 @@ class CreateGiftCardsTable extends Migration
     public function up()
     {
         Schema::create('gift_cards', function (Blueprint $table) {
-            $table->id();
+            $table->increments('cardId');
+            $table->string('cardName');
+            $table->string('cardType');
+            $table->float('cardValue', 10, 2);
+            $table->integer('points');
             $table->timestamps();
         });
     }
