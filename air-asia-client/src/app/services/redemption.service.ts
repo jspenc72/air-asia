@@ -53,10 +53,10 @@ export class RedemptionService {
     );
   }
 
-  public addRedemption(cases: Redemptions): Observable<Redemption> {
-    return this.http.post<Redemptions>(apiUrl, cases, httpOptions).pipe(
-      tap((c: Redemptions) => console.log(`added cases w/ id=${c._id}`)),
-      catchError(this.handleError<Redemptions>('addCases'))
+  public addRedemption(cases: Redemption): Observable<Redemption> {
+    return this.http.post<Redemption>(apiUrl, cases, httpOptions).pipe(
+      tap((c: Redemption) => console.log(`added cases w/ id=${c._id}`)),
+      catchError(this.handleError<Redemption>('addCases'))
     );
   }
 
@@ -70,9 +70,9 @@ export class RedemptionService {
 
   public deleteRedemption(id: string): Observable<Redemption> {
     const url = `${apiUrl}/${id}`;
-    return this.http.delete<Redemptions>(url, httpOptions).pipe(
+    return this.http.delete<Redemption>(url, httpOptions).pipe(
       tap(_ => console.log(`deleted cases id=${id}`)),
-      catchError(this.handleError<Redemptions>('deleteCases'))
+      catchError(this.handleError<Redemption>('deleteCases'))
     );
   }
 

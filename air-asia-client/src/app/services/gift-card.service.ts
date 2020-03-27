@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import {  throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { retry, catchError, tap, map } from 'rxjs/operators';
 import { GiftCard } from '../models/gift-card.model';
 
 const httpOptions = {
@@ -31,6 +31,14 @@ export class GiftCardService {
   }
 
   public sendGetRequest(){
-    return this.httpClient.get(this.ENDPOINT).pipe(retry(3), catchError(this.handleError));
+    console.log("sendGetRequest")
+    return this.httpClient.get(this.REST_API_SERVER+this.ENDPOINT).pipe(retry(3), catchError(this.handleError));
+  }
+
+  public addGiftCard(giftcard: GiftCard): Observable<GiftCard> {
+    return this.httpClient.post<GiftCard>(this.REST_API_SERVER+this.ENDPOINT, giftcard, httpOptions).pipe(
+      tap((c: GiftCard) => console.log(`added card ${c}`)),
+      catchError(this.handleError)
+    );
   }
 }
