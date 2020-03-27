@@ -4,6 +4,3 @@ export interface Account {
     accountType: string;
     points: number;
 }
-
-
-

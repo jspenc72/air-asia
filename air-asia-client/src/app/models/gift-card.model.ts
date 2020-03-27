@@ -6,11 +6,3 @@ export interface GiftCard {
     cardValue: string;
     points: string;
 }
-
-
-
-
-
-
-
-
