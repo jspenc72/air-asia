@@ -16,6 +16,10 @@ export class CardDetailsComponent implements OnInit {
     // this.item = { title: "card1", type: "", value: 100, image: "https://d2e70e9yced57e.cloudfront.net/wallethub/posts/68808/best-gift-cards.png", description: "Chick Fila-A $10 Gift Card", points: 10}
   }
 
+  displayCardDeleteComponent(): void {
+    console.log("displayCardDeleteComponent")
+    this.router.navigateByUrl('/card-delete', { state: { item: this.item  } });
+  }
 
   displayCardUpdateComponent(): void {
     console.log("displayCardUpdateComponent")

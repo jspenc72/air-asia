@@ -44,6 +44,13 @@ export class GiftCardService {
     );
   }
 
+  public deleteGiftCard(giftcard: GiftCard): Observable<GiftCard> {
+    return this.httpClient.delete<GiftCard>(this.REST_API_SERVER+this.ENDPOINT+"/"+giftcard.id, httpOptions).pipe(
+      tap((c: GiftCard) => console.log(`deleted card ${c}`)),
+      catchError(this.handleError)
+    );
+  }
+
   public getGiftCards(): Observable<GiftCard[]> {
     return this.httpClient.get<GiftCard[]>(`${this.REST_API_SERVER+this.ENDPOINT}`)
       .pipe(

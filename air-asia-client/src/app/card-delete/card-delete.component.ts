@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { filter, map } from 'rxjs/operators';
+import { RouterModule, Routes, Router, RouterState, NavigationStart, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { GiftCardService } from '../services/gift-card.service';
+import { GiftCard } from '../models/gift-card.model';
 
 @Component({
   selector: 'app-card-delete',
@@ -6,10 +11,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-delete.component.scss']
 })
 export class CardDeleteComponent implements OnInit {
+  item: any;
+  state$: any
+  constructor(private location: Location, private router: Router, public activatedRoute: ActivatedRoute, private giftCardService: GiftCardService) { 
+  }
+  ngOnInit() {
+    console.log(this.location.getState());
+    this.state$ = this.location.getState();
 
-  constructor() { }
+    if (!this.state$.item){
+        this.router.navigateByUrl('/card-list');
+    } else{
+      this.item = this.state$.item;
+    }
+  }
 
-  ngOnInit(): void {
+  deleteCard(): void {
+    console.log("deleteCard");
+
+    this.giftCardService.deleteGiftCard(this.item).subscribe((data: any)=>{
+      this.router.navigateByUrl('/card-list');
+    })
   }
 
 }
