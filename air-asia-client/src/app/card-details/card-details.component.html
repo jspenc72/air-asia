@@ -3,13 +3,13 @@
 <button mat-button routerLink="/card-update" routerLinkActive="active">Update Card</button>
 
 <mat-card class="example-card" >
-    <img mat-card-image [src]="item.image" alt="Photo of a Shiba Inu" >
+    <img mat-card-image [src]="item.image || item.cardImageUrl" alt="Photo of {{item.cardName}}" >
     <mat-card-content>
         <p>
-        {{item.description}}<br>
-        {{item.type}} Card Type<br>
-        {{item.points}} Card Points<br>
-        {{item.value}} Card Value
+        {{item.cardName}}<br>
+        {{item.cardType}} <br>
+        {{item.points}} <br>
+        {{item.cardValue}} 
         </p>
     </mat-card-content>
     <mat-card-actions>
