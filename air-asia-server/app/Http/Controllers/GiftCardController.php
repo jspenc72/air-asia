@@ -88,7 +88,6 @@ class GiftCardController extends Controller
      */
     public function destroy(GiftCard $giftcard)
     {
-        //
         $giftcard->delete();
         return response()->json(null, 204);
     }
