@@ -22,9 +22,9 @@ function randomNumber(min, max) {
 export class CardAddComponent implements OnInit {
   newCardFormGroup: FormGroup;
   cardTypes: CardType[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
+    {value: 'gift-0', viewValue: 'Gift'},
+    {value: 'visa-1', viewValue: 'Visa'},
+    {value: 'master-2', viewValue: 'Master'}
   ];
   constructor(private giftCardService: GiftCardService, private _formBuilder: FormBuilder, private router: Router) {
 
