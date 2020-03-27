@@ -43,7 +43,7 @@ export class GiftCardService {
   }
 
   public updateGiftCard(giftcard: GiftCard): Observable<GiftCard> {
-    return this.httpClient.post<GiftCard>(this.REST_API_SERVER+this.ENDPOINT, giftcard, httpOptions).pipe(
+    return this.httpClient.put<GiftCard>(this.REST_API_SERVER+this.ENDPOINT, giftcard.id, httpOptions).pipe(
       tap((c: GiftCard) => console.log(`added card ${c}`)),
       catchError(this.handleError)
     );
