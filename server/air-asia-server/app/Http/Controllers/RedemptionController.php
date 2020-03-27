@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Redemption;
 
 class RedemptionController extends Controller
 {
@@ -14,6 +15,7 @@ class RedemptionController extends Controller
     public function index()
     {
         //
+        return Redemption::all();
     }
 
     /**
@@ -35,6 +37,8 @@ class RedemptionController extends Controller
     public function store(Request $request)
     {
         //
+        $account = Redemption::create($request->all());
+        return response()->json($account, 201);
     }
 
     /**
@@ -43,9 +47,10 @@ class RedemptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Redemption $redemption)
     {
         //
+        return $redemption
     }
 
     /**
@@ -66,9 +71,11 @@ class RedemptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Redemption $redemption)
     {
         //
+        $redemption->update($request->all());
+        return response()->json($redemption, 200);
     }
 
     /**
@@ -77,8 +84,10 @@ class RedemptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Redemption $redemption)
     {
         //
+        $redemption->delete();
+        return response()->json(null, 204);
     }
 }

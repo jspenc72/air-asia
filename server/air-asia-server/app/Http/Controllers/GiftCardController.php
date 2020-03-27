@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\GiftCard;
 
 class GiftCardController extends Controller
 {
@@ -14,6 +15,7 @@ class GiftCardController extends Controller
     public function index()
     {
         //
+        return GiftCard::all();
     }
 
     /**
@@ -35,6 +37,9 @@ class GiftCardController extends Controller
     public function store(Request $request)
     {
         //
+        $giftcard = GiftCard::create($request->all());
+
+        return response()->json($giftcard, 201);
     }
 
     /**
@@ -43,9 +48,10 @@ class GiftCardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(GiftCard $giftcard)
     {
         //
+        return $giftcard;
     }
 
     /**
@@ -66,9 +72,12 @@ class GiftCardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, GiftCard $giftcard)
     {
         //
+        $giftcard->update($request->all());
+
+        return response()->json($giftcard, 200);
     }
 
     /**
@@ -77,8 +86,10 @@ class GiftCardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(GiftCard $giftcard)
     {
         //
+        $giftcard->delete();
+        return response()->json(null, 204);
     }
 }
