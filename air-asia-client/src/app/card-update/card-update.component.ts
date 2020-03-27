@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule, Routes, Router, RouterState } from '@angular/router';
+import { RouterModule, Routes, Router, RouterState, NavigationStart, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GiftCardService } from '../services/gift-card.service';
 import { GiftCard } from '../models/gift-card.model';
@@ -20,12 +21,23 @@ export class CardUpdateComponent implements OnInit {
     {value: 'visa-1', viewValue: 'Visa'},
     {value: 'master-2', viewValue: 'Master'}
   ];
-  constructor(private giftCardService: GiftCardService, private _formBuilder: FormBuilder, private router: Router) {
+  item: any;
+  state$: any;
+  constructor(private location: Location, private giftCardService: GiftCardService, private _formBuilder: FormBuilder, private router: Router) {
 
 
   }
 
+  
   ngOnInit() {
+    console.log(this.location.getState());
+    this.state$ = this.location.getState();
+
+    if (!this.state$.item){
+        this.router.navigateByUrl('/card-list');
+    } else{
+      this.item = this.state$.item;
+    }
 
     var urls = [
       'https://d2e70e9yced57e.cloudfront.net/wallethub/posts/68808/best-gift-cards.png',
@@ -34,13 +46,15 @@ export class CardUpdateComponent implements OnInit {
     ]
 
     this.updateCardFormGroup = this._formBuilder.group({
-      cardName: ['', Validators.required],
-      cardType: ['', Validators.required],
-      cardValue: ['', Validators.required],
-      points: ['', Validators.required],
-      cardImageUrl: ['', Validators.required]
+      cardName: [this.item.cardName, Validators.required],
+      cardType: [this.item.cardType, Validators.required],
+      cardValue: [this.item.cardValue, Validators.required],
+      points: [this.item.points, Validators.required],
+      id: [this.item.id, Validators.required]
     });
   }
+
+
 
   updateCard(): void {
     console.log("updateCard");

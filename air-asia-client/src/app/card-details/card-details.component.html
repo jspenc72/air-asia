@@ -1,6 +1,6 @@
 <p>Card Detail</p>
 <button mat-button routerLink="/card-delete" routerLinkActive="active">Delete Card</button>
-<button mat-button routerLink="/card-update" routerLinkActive="active">Update Card</button>
+<button mat-button (click)="displayCardUpdateComponent()">Update Card</button>
 
 <mat-card class="example-card" >
     <img mat-card-image [src]="item.image || item.cardImageUrl" alt="Photo of {{item.cardName}}" >
