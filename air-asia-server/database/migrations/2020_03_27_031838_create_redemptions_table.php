@@ -14,7 +14,7 @@ class CreateRedemptionsTable extends Migration
     public function up()
     {
         Schema::create('redemptions', function (Blueprint $table) {
-            $table->increments('redeemId');
+            $table->id();
             $table->string('date');
             $table->integer('accountId');
             $table->integer('cardId');
