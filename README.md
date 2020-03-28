@@ -1,6 +1,6 @@
 # air-asia
 
-# Development
+# Angular Client Development
 
 Install dependencies
 
@@ -14,7 +14,8 @@ Start development server
 ng serve
 ```
 
-# Deployment
+
+# Angular Client Deployment
 
 ```bash
 ng build --extractCss=true --optimization=false
@@ -29,9 +30,23 @@ docker build -t air-asia .
 docker run air-asia -p 4200:4200 
 ```
 
+# Laravel API Development
+
+1. Start a mysql database
+2. Run database migrations and see to create populate database with test data
+
+```bash
+php artisan migrate:refresh --seed
+```
+
+3. Run the developement server
+
+```bash
+php artisan serve
+```
 
 # Dependencies
 
 https://cli.angular.io
 https://laravel.com
-
+mysql
