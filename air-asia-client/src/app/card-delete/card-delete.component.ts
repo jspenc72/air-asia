@@ -28,7 +28,7 @@ export class CardDeleteComponent implements OnInit {
 
   deleteCard(): void {
     console.log("deleteCard");
-
+    console.log(this.item);
     this.giftCardService.deleteGiftCard(this.item).subscribe((data: any)=>{
       this.router.navigateByUrl('/card-list');
     })
