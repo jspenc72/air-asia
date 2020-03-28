@@ -20,6 +20,12 @@ ng serve
 ng build --extractCss=true --optimization=false
 ng build --prod --base-href "air-asia"
 ```
+## Compile App for Deployment to github pages.
+
+```bash
+ng build --prod --base-href "air-asia"
+
+```
 
 ## Build and run angular app as Docker Container
 
