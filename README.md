@@ -21,6 +21,8 @@ ng build --extractCss=true --optimization=false
 ng build --prod --base-href "air-asia"
 ```
 
+## Build and run angular app as Docker Container
+
 ```bash
 docker build -t air-asia .
 ```
