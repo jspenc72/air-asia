@@ -14,7 +14,6 @@ Start development server
 ng serve
 ```
 
-
 # Angular Client Deployment
 
 ```bash
