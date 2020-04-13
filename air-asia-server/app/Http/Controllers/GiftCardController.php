@@ -38,7 +38,6 @@ class GiftCardController extends Controller
     {
         //
         $giftcard = GiftCard::create($request->all());
-
         return response()->json($giftcard, 201);
     }
 
@@ -76,7 +75,6 @@ class GiftCardController extends Controller
     {
         //
         $giftcard->update($request->all());
-
         return response()->json($giftcard, 200);
     }
 
