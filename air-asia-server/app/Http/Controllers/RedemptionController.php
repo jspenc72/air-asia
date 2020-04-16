@@ -50,7 +50,7 @@ class RedemptionController extends Controller
     public function show(Redemption $redemption)
     {
         //
-        return $redemption
+        return $redemption;
     }
 
     /**
