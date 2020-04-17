@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes, Router, RouterState } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,14 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
-
+  constructor(private cookieService: CookieService, private _formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
+    // cookieService.set('laravel_session', 'value')
+    console.log(cookieService.get('laravel_session'))
   }
 
   ngOnInit(): void {
     this.loginFormGroup = this._formBuilder.group({
-      email: ['email', Validators.required],
+      email: ['jspenc72@gmail.com', Validators.required],
       password: ['password', Validators.required]
     });    
   }

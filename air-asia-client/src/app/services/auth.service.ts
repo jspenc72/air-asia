@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { retry, catchError, tap, map } from 'rxjs/operators';
+import { ConfigService } from '../services/config.service';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -13,9 +14,12 @@ const httpOptions = {
 export class AuthService {
   private ENDPOINT = "/user";
   private OAUTH_TOKEN_ENDPOINT = "/login";
-  private REST_API_SERVER = "http://localhost:8000";
+  private REST_API_SERVER: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private configService: ConfigService) { 
+    this.REST_API_SERVER = configService.REST_API_SERVER;
+
+  }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
