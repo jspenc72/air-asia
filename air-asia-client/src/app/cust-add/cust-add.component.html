@@ -1,19 +1,46 @@
 <p>Add Customer</p>
-<form class="example-form">
+<form [formGroup]="customerFormGroup" class="example-form">
     <mat-form-field class="example-full-width">
         <mat-label>Customer Name</mat-label>
-        <textarea matInput placeholder="Ex. Chong Oh"></textarea>
+        <input matInput type="text" formControlName="customerName" placeholder="Enter Name" >
       </mat-form-field>
   
-    <mat-form-field class="example-full-width">
-      <mat-label>Account type</mat-label>
-      <textarea matInput placeholder="Ex. Executive"></textarea>
-    </mat-form-field>
+      <mat-label>Account type</mat-label><br>
+      <mat-radio-group class="example-radio-group" matInput formControlName="accountType"  aria-label="Select an option">
+        <mat-radio-button matInput value="customer">customer</mat-radio-button>
+        <mat-radio-button matInput value="admin">Admin</mat-radio-button>
+      </mat-radio-group>   
+    
 
     <mat-form-field class="example-full-width">
         <mat-label>Points</mat-label>
-        <textarea matInput placeholder="Ex. 10"></textarea>
+        <textarea matInput formControlName="points" placeholder="Ex. 10"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <textarea matInput formControlName="email" placeholder="Ex. 10"></textarea>
       </mat-form-field>
   </form>
 
-  <button mat-button routerLink="/card-list" routerLinkActive="active">Submit</button>
+  <button mat-button (click)="clickedAddCustomer()">Submit</button>
+
+
+  <mat-list>
+    <div mat-subheader>Customers</div>
+    <mat-list-item *ngFor="let customer of customers">
+      <mat-icon mat-list-icon>person</mat-icon>
+      <div mat-line>{{customer.customerName}}</div>
+      <div mat-line>{{customer.email}}</div>
+      <div mat-line>{{customer.accountType}}</div>
+      <div mat-line>{{customer.points}}</div>
+      <div mat-line>Created At: {{customer.created_at | date}} </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <div mat-subheader>Admins</div>
+    <!-- <mat-list-item *ngFor="let note of notes">
+      <mat-icon mat-list-icon>note</mat-icon>
+      <div mat-line>{{note.name}}</div>
+      <div mat-line> {{note.updated | date}} </div>
+    </mat-list-item> -->
+  </mat-list>

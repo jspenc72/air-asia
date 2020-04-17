@@ -47,6 +47,7 @@ import { CardUpdateComponent } from './card-update/card-update.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustAddComponent } from './cust-add/cust-add.component';
 import { CardDeleteComponent } from './card-delete/card-delete.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { CardDeleteComponent } from './card-delete/card-delete.component';
     CardAddComponent,
     CardUpdateComponent,
     CustAddComponent,
-    CardDeleteComponent
+    CardDeleteComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

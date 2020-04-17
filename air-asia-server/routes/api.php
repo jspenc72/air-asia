@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Auth;
 // Auth::routes();
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::post('login', 'API\AuthController@login');
+Route::post('register', 'API\AuthController@register');
+Route::middleware('auth:api')->get('/profile', function (Request $request) {
     return $request->user();
 });
+
+
 
 Route::resource('user', 'UserController');
 Route::resource('account', 'AccountController');
@@ -43,3 +47,4 @@ Route::get('gift-cards/{giftcard}', 'GiftCardController@show'); // Read One
 Route::post('gift-cards', 'GiftCardController@store');           // Create 
 Route::put('gift-cards/{giftcard}', 'GiftCardController@update'); // Update
 Route::delete('gift-cards/{giftcard}', 'GiftCardController@destroy'); // Delete
+

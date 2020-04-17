@@ -301,7 +301,10 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <div class="spacer"></div>
-  <span routerLink="/login" routerLinkActive="active" >Click Here for Air-Asia Login</span>
+  <button routerLink="/login" routerLinkActive="active" mat-raised-button color="primary">Air Asia - Login</button>
+  <div class="spacer"></div>
+  {{(authService.currentUser ? authService.currentUser.email : '')}}
+  <button (click)="logout()" mat-raised-button color="primary">Logout</button>
   <div class="spacer"></div>
 </div>
 

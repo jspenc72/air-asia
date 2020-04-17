@@ -5,36 +5,40 @@ import { AuthService } from '../services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
-  loginFormGroup: FormGroup;
+export class RegisterComponent implements OnInit {
+  registerFormGroup: FormGroup;
+
   constructor(private cookieService: CookieService, private _formBuilder: FormBuilder, private router: Router, private authService: AuthService) {
     // cookieService.set('laravel_session', 'value')
     // console.log('laravel_session', cookieService.getAll())
 
   }
-
   ngOnInit(): void {
-    this.loginFormGroup = this._formBuilder.group({
+    this.registerFormGroup = this._formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      password: ['', Validators.required],
+      c_password: ['', Validators.required]
     });    
   }
   clickedSignUp(): void {
     console.log("clickedSignUp!");
-    this.router.navigateByUrl('/register');
+    console.log(this.registerFormGroup.value);
+    this.registerFormGroup.value.username = this.registerFormGroup.value.email
+    this.authService.sendRegisterRequest(this.registerFormGroup.value).subscribe((data: any) => {
+      console.log("data", data);
+      this.router.navigateByUrl('/card-list');
+    })   
   }
   
   clickedLogin(): void {
     console.log("clickedLogin!");
-    console.log(this.loginFormGroup.value);
-    this.authService.sendLoginRequest(this.loginFormGroup.value).subscribe((data: any) => {
-      console.log("data", data);
-      this.router.navigateByUrl('/card-list');
-    })   
+    this.router.navigateByUrl('/login');
   }
 
 }

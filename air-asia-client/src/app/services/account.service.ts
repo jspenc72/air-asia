@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import {  throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { retry, catchError, tap, map } from 'rxjs/operators';
 import { Account } from '../models/account.model';
 
 const httpOptions = {
@@ -32,4 +32,45 @@ export class AccountService {
   public sendGetRequest(){
     return this.httpClient.get(this.ENDPOINT).pipe(retry(3), catchError(this.handleError));
   }
+
+
+  public add(item: any): Observable<any> {
+    return this.httpClient.post<any>(this.REST_API_SERVER+this.ENDPOINT, item, httpOptions).pipe(
+      tap((c: any) => console.log(`added card ${c}`)),
+      catchError(this.handleError)
+    );
+  }
+
+  public update(item: any): Observable<any> {
+    return this.httpClient.put<any>(this.REST_API_SERVER+this.ENDPOINT+"/"+item.id, item, httpOptions).pipe(
+      tap((c: any) => console.log(`added card ${c}`)),
+      catchError(this.handleError)
+    );
+  }
+
+  public delete(item: any): Observable<any> {
+    return this.httpClient.delete<any>(this.REST_API_SERVER+this.ENDPOINT+"/"+item.id, httpOptions).pipe(
+      tap((c: any) => console.log(`deleted card ${c}`)),
+      catchError(this.handleError)
+    );
+  }
+
+  public getAll(): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.REST_API_SERVER+this.ENDPOINT}`)
+      .pipe(
+        tap(cards => {
+          
+          console.log('fetched cases')
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  public getBy(id: number): Observable<any> {
+    return this.httpClient.get<any>(this.REST_API_SERVER+this.ENDPOINT+"/"+id, httpOptions).pipe(
+      tap((c: any) => console.log(`got card ${c}`)),
+      catchError(this.handleError)
+    );
+  }
+
 }

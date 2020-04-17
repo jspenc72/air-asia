@@ -44,6 +44,7 @@ docker run air-asia -p 4200:4200
 
 ```bash
 php artisan migrate:refresh --seed
+php artisan passport:install
 ```
 
 3. Run the developement server
