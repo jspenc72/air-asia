@@ -24,6 +24,7 @@
   </form>
 
   <button mat-button (click)="clickedAddCustomer()">Submit</button>
+  <button mat-button routerLink="/card-list" routerLinkActive="active" color="accent">Back</button>
 
 
   <mat-list>
@@ -37,10 +38,4 @@
       <div mat-line>Created At: {{customer.created_at | date}} </div>
     </mat-list-item>
     <mat-divider></mat-divider>
-    <div mat-subheader>Admins</div>
-    <!-- <mat-list-item *ngFor="let note of notes">
-      <mat-icon mat-list-icon>note</mat-icon>
-      <div mat-line>{{note.name}}</div>
-      <div mat-line> {{note.updated | date}} </div>
-    </mat-list-item> -->
   </mat-list>

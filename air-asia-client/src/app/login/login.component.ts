@@ -33,7 +33,11 @@ export class LoginComponent implements OnInit {
     console.log(this.loginFormGroup.value);
     this.authService.sendLoginRequest(this.loginFormGroup.value).subscribe((data: any) => {
       console.log("data", data);
-      this.router.navigateByUrl('/card-list');
+      if(data.status=='success'){
+        this.router.navigateByUrl('/card-list');
+      }else{
+        console.log("not authenticated.");
+      }
     })   
   }
 
