@@ -1,14 +1,14 @@
 version: "3.7"
 services:
-  # suburbanoutfitters:
-  #   build:
-  #     context: ./air-asia
-  #     dockerfile: Dockerfile
-  #   image: nginx:1.17.1-alpine
-  #   ports:
-  #     - "80:80"
-  #   volumes:
-  #     - ./air-asia/nginx/suburbanoutfitters.conf:/etc/nginx/conf.d/default.conf
+  airasia:
+    build:
+      context: ./air-asia-client
+      dockerfile: Dockerfile
+    image: nginx:1.17.1-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./air-asia/nginx/airasia.conf:/etc/nginx/conf.d/default.conf
   mysql:
     image: mysql:5.7.29
     restart: unless-stopped
