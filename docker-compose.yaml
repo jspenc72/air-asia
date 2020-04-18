@@ -8,7 +8,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./air-asia/nginx/airasia.conf:/etc/nginx/conf.d/default.conf
+      - ./air-asia-client/nginx/airasia.conf:/etc/nginx/conf.d/default.conf
   mysql:
     image: mysql:5.7.29
     restart: unless-stopped
@@ -34,7 +34,7 @@ services:
       - ./air-asia-server/:/var/www
       - ./air-asia-server/nginx/conf.d/:/etc/nginx/conf.d/
   #PHP Service
-  app:
+  api:
     build:
       context: ./air-asia-server
       dockerfile: Dockerfile
