@@ -1,4 +1,4 @@
-<button mat-button routerLink="/cust-add" routerLinkActive="active">Add Customer</button>
+<button mat-button routerLink="/cust-add" routerLinkActive="active" *ngIf="authService.currentUser && authService.currentUser.role=='admin'">Add Customer</button>
 <button mat-button routerLink="/card-add" routerLinkActive="active">Add Card</button>
 
 <div class="container"

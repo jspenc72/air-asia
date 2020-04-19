@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes, Router, RouterState } from '@angular/router';
 import { GiftCardService } from '../services/gift-card.service';
 import { GiftCard } from '../models/gift-card.model';
+import { AuthService } from '../services/auth.service';
 // import {StateService} from '@uirouter/angular';
 @Component({
   selector: 'app-card-list',
@@ -11,9 +12,9 @@ import { GiftCard } from '../models/gift-card.model';
 export class CardListComponent implements OnInit {
   items: any
   state: any
-  constructor(private giftCardService: GiftCardService, private router: Router) { 
+  constructor(private giftCardService: GiftCardService, private router: Router, public authService: AuthService) {
     this.state = router.routerState;
-    this.items = []
+    this.items = [];
   }
   
   displayCardDetail(item): void {
@@ -21,6 +22,7 @@ export class CardListComponent implements OnInit {
     console.log(item)
     this.router.navigateByUrl('/card-details', { state: { item: item  } });
   }
+
   reloadGiftCards(): void {
     this.giftCardService.getGiftCards().subscribe((data: any)=>{
       console.log(data);

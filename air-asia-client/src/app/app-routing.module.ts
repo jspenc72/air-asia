@@ -9,6 +9,7 @@ import  { CardUpdateComponent }  from './card-update/card-update.component';
 import  { CardDeleteComponent }  from './card-delete/card-delete.component';
 import  { CustAddComponent }  from './cust-add/cust-add.component';
 import  { AuthGuard } from './guards/auth.guard';
+import  { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent }, 
@@ -18,7 +19,7 @@ const routes: Routes = [
   { path: 'card-add', component: CardAddComponent, canActivate: [AuthGuard] },
   { path: 'card-update', component: CardUpdateComponent, canActivate: [AuthGuard] },
   { path: 'card-delete', component: CardDeleteComponent, canActivate: [AuthGuard] },
-  { path: 'cust-add', component: CustAddComponent, canActivate: [AuthGuard] }
+  { path: 'cust-add', component: CustAddComponent, canActivate: [AuthGuard, AdminGuard] }
 ];
 
 @NgModule({
